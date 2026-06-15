@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Server Error - Task Manager Plus{% endblock %}
+
+{% block page_title %}Something went wrong{% endblock %}
+
+{% block content %}
+    <section class="card error-card">
+        <p>
+            The app ran into an unexpected problem.
+        </p>
+
+        <p>
+            Your tasks may still be safe. Try going back to the task list.
+        </p>
+
+        <div class="form-actions">
+            <a class="button" href="{{ url_for('index') }}">
+                Back to tasks
+            </a>
+        </div>
+    </section>
+{% endblock %}

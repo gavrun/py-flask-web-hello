@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Task Manager Plus{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav">
+            <a
+                class="brand"
+                href="{{ url_for('index') }}"
+            >
+                Task Manager Plus
+            </a>
+
+            <div class="nav-links">
+                <a
+                    href="{{ url_for('index') }}"
+                    class="{% if request.endpoint == 'index' %}active{% endif %}"
+                >
+                    Home
+                </a>
+
+                <a
+                    href="{{ url_for('about') }}"
+                    class="{% if request.endpoint == 'about' %}active{% endif %}"
+                >
+                    About
+                </a>
+
+                <a
+                    href="{{ url_for('health') }}"
+                    class="{% if request.endpoint == 'health' %}active{% endif %}"
+                >
+                    Health
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <header class="page-header">
+            <h1>{% block page_title %}{% endblock %}</h1>
+        </header>
+
+        <section class="flash-area">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="flash flash-{{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </section>
+
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <p>Built while learning Flask basics.</p>
+    </footer>
+</body>
+</html>

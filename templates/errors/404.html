@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Page Not Found - Task Manager Plus{% endblock %}
+
+{% block page_title %}Page not found{% endblock %}
+
+{% block content %}
+    <section class="card error-card">
+        <p>
+            The page or task you were looking for does not exist.
+        </p>
+
+        <p>
+            It may have been deleted, moved, or typed incorrectly.
+        </p>
+
+        <div class="form-actions">
+            <a class="button" href="{{ url_for('index') }}">
+                Back to tasks
+            </a>
+
+            <a class="button secondary" href="{{ url_for('about') }}">
+                About this app
+            </a>
+        </div>
+    </section>
+{% endblock %}
